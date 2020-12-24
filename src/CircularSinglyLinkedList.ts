@@ -29,21 +29,28 @@ export class CircularSinglyLinkedList<T> implements ICollection<T> {
   remove(value: T): void {
     let prevNode: CircularSinglyLinkedNode<T> = null;
     let currentNode = this.head;
-    while (currentNode !== this.tail) {
+    if (currentNode === null) {
+      return;
+    }
+    do {
       if (currentNode.value === value) {
-        if (currentNode === this.head) {
+        if (currentNode.next === currentNode) {
+          this.head = this.tail = null;
+        } else if (currentNode === this.head) {
           this.head = this.head.next;
           this.tail.next = this.head;
-        } else if (currentNode.next === this.tail) {
+        } else if (currentNode === this.tail) {
           prevNode.next = this.head;
+          this.tail = prevNode;
         } else {
           prevNode.next = currentNode.next;
         }
         this.size--;
+        break;
       }
       prevNode = currentNode;
       currentNode = currentNode.next;
-    }
+    } while (currentNode !== this.head);
   }
 
   [Symbol.iterator](): Iterator<T> {

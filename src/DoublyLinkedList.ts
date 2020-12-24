@@ -32,7 +32,10 @@ export class DoublyLinkedList<T> implements ICollection<T> {
   remove(value: T): void {
     let prevNode: DoublyLinkedNode<T> = null;
     let currentNode = this.head;
-    while (currentNode !== null) {
+    if (currentNode === null) {
+      return;
+    }
+    do {
       if (currentNode.value === value) {
         if (currentNode === this.head) {
           this.head = this.head.next;
@@ -46,10 +49,11 @@ export class DoublyLinkedList<T> implements ICollection<T> {
           prevNode.next.prev = prevNode;
         }
         this.size--;
+        break;
       }
       prevNode = currentNode;
       currentNode = currentNode.next;
-    }
+    } while (currentNode !== null);
   }
 
   [Symbol.iterator](): Iterator<T> {

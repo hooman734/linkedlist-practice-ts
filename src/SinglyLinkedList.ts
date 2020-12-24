@@ -33,6 +33,7 @@ export class SinglyLinkedList<T> implements ICollection<T> {
           prevNode.next = currentNode.next;
         }
         this.size--;
+        break;
       }
       prevNode = currentNode;
       currentNode = currentNode.next;

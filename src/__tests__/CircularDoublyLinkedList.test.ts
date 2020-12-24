@@ -25,7 +25,7 @@ describe('CircularDoublyLinkedList', () => {
       circularDoublyLinkedList.add(v);
     });
 
-    [3, 1, 2].forEach(v => {
+    [3, 1, 2, 0].forEach(v => {
       circularDoublyLinkedList.remove(v);
     });
 
