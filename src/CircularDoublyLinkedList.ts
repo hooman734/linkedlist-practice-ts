@@ -43,9 +43,10 @@ export class CircularDoublyLinkedList<T> implements ICollection<T> {
         } else if (currentNode === this.head) {
           this.head = this.head.next;
           this.tail.next = this.head;
-        } else if (currentNode.next === this.tail) {
+        } else if (currentNode === this.tail) {
           prevNode.next = this.head;
           this.head.prev = prevNode;
+          this.tail = prevNode;
         } else {
           prevNode.next = currentNode.next;
           currentNode.next.prev = prevNode;
