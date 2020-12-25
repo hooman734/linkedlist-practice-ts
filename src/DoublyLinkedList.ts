@@ -1,5 +1,6 @@
 import { ICollection } from './interfaces/ICollection';
 import { Iterator } from './interfaces/IIterator';
+import { Name } from './utilities/classdecorators';
 
 class DoublyLinkedNode<T> {
   public prev: DoublyLinkedNode<T>;
@@ -17,6 +18,7 @@ class DoublyLinkedNode<T> {
   }
 }
 
+@Name('DoublyLinkedList')
 export class DoublyLinkedList<T> implements ICollection<T> {
   private head: DoublyLinkedNode<T>;
   size = 0;
@@ -54,6 +56,19 @@ export class DoublyLinkedList<T> implements ICollection<T> {
       prevNode = currentNode;
       currentNode = currentNode.next;
     } while (currentNode !== null);
+  }
+
+  reverse(): void {
+    let prevNode: DoublyLinkedNode<T> = null;
+    let currentNode: DoublyLinkedNode<T> = this.head;
+    while (currentNode != null) {
+      const nextNode = currentNode.next;
+      currentNode.next = prevNode;
+
+      prevNode = currentNode;
+      currentNode = nextNode;
+    }
+    this.head = prevNode;
   }
 
   [Symbol.iterator](): Iterator<T> {

@@ -1,5 +1,6 @@
 import { ICollection } from './interfaces/ICollection';
 import { Iterator } from './interfaces/IIterator';
+import { Name } from './utilities/classdecorators';
 
 class CircularDoublyLinkedNode<T> {
   public prev: CircularDoublyLinkedNode<T>;
@@ -13,6 +14,7 @@ class CircularDoublyLinkedNode<T> {
   }
 }
 
+@Name("CircularDoublyLinkedList")
 export class CircularDoublyLinkedList<T> implements ICollection<T> {
   private head: CircularDoublyLinkedNode<T> = null;
   private tail: CircularDoublyLinkedNode<T> = null;
@@ -57,6 +59,12 @@ export class CircularDoublyLinkedList<T> implements ICollection<T> {
       prevNode = currentNode;
       currentNode = currentNode.next;
     } while (currentNode !== this.head);
+  }
+
+  reverse(): void {
+    const temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
   }
 
   [Symbol.iterator](): Iterator<T> {

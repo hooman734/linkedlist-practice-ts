@@ -5,5 +5,6 @@ export interface ICollection<T> {
   clear(): void;
   add(value: T) : void;
   remove(value: T) : void;
+  reverse(): void;
   [Symbol.iterator]() : Iterator<T>;
 }

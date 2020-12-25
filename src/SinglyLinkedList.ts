@@ -1,5 +1,6 @@
 import { ICollection } from './interfaces/ICollection';
 import { Iterator } from './interfaces/IIterator';
+import { Name } from './utilities/classdecorators';
 
 class SinglyLinkedNode<T> {
   public value: T;
@@ -11,6 +12,7 @@ class SinglyLinkedNode<T> {
   }
 }
 
+@Name("SinglyLinkedList")
 export class SinglyLinkedList<T> implements ICollection<T> {
   private head: SinglyLinkedNode<T> = null;
   size = 0;
@@ -38,6 +40,19 @@ export class SinglyLinkedList<T> implements ICollection<T> {
       prevNode = currentNode;
       currentNode = currentNode.next;
     }
+  }
+
+  reverse(): void {
+    let prevNode: SinglyLinkedNode<T> = null;
+    let currentNode: SinglyLinkedNode<T> = this.head;
+    while (currentNode != null) {
+      const nextNode = currentNode.next;
+      currentNode.next = prevNode;
+
+      prevNode = currentNode;
+      currentNode = nextNode;
+    }
+    this.head = prevNode;
   }
 
   [Symbol.iterator](): Iterator<T> {
