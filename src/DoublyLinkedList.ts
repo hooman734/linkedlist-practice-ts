@@ -59,6 +59,9 @@ export class DoublyLinkedList<T> implements ICollection<T> {
   }
 
   reverse(): void {
+    if (this.size <= 1) {
+      return;
+    }
     let prevNode: DoublyLinkedNode<T> = null;
     let currentNode: DoublyLinkedNode<T> = this.head;
     while (currentNode != null) {

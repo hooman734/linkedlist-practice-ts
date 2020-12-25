@@ -25,11 +25,10 @@ export class CircularDoublyLinkedList<T> implements ICollection<T> {
     this.head = new CircularDoublyLinkedNode(this.tail, value, this.head);
     if (this.size === 1) {
       this.tail = this.head;
-      this.tail.next = this.head;
-      this.head.prev = this.tail;
-    } else {
-      this.tail.next = this.head;
     }
+
+    this.tail.next = this.head;
+    this.tail.prev = this.head;
   }
 
   remove(value: T): void {
@@ -62,9 +61,21 @@ export class CircularDoublyLinkedList<T> implements ICollection<T> {
   }
 
   reverse(): void {
-    const temp = this.head;
-    this.head = this.tail;
-    this.tail = temp;
+    if (this.size <= 1) {
+      return;
+    }
+    let prevNode: CircularDoublyLinkedNode<T> = this.tail;
+    let currentNode: CircularDoublyLinkedNode<T> = this.head;
+    do {
+      const nextNode = currentNode.next;
+      currentNode.next = prevNode;
+
+      prevNode = currentNode;
+      currentNode = nextNode;
+    } while (currentNode !== this.head);
+
+    this.head.next = prevNode;
+    this.head = prevNode;
   }
 
   [Symbol.iterator](): Iterator<T> {

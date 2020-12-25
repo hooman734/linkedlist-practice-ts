@@ -13,7 +13,7 @@ class CircularSinglyLinkedNode<T> {
 }
 
 
-@Name("CircularSinglyLinkedList")
+@Name('CircularSinglyLinkedList')
 export class CircularSinglyLinkedList<T> implements ICollection<T> {
   private head: CircularSinglyLinkedNode<T> = null;
   private tail: CircularSinglyLinkedNode<T> = null;
@@ -57,9 +57,21 @@ export class CircularSinglyLinkedList<T> implements ICollection<T> {
   }
 
   reverse(): void {
-    const temp = this.head;
-    this.head = this.tail;
-    this.tail = temp;
+    if (this.size <= 1) {
+      return;
+    }
+    let prevNode: CircularSinglyLinkedNode<T> = null;
+    let currentNode: CircularSinglyLinkedNode<T> = this.head;
+    do {
+      const nextNode = currentNode.next;
+      currentNode.next = prevNode;
+
+      prevNode = currentNode;
+      currentNode = nextNode;
+    } while (currentNode !== this.head);
+
+    this.head.next = prevNode;
+    this.head = prevNode;
   }
 
   [Symbol.iterator](): Iterator<T> {

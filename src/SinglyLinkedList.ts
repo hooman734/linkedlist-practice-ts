@@ -43,6 +43,9 @@ export class SinglyLinkedList<T> implements ICollection<T> {
   }
 
   reverse(): void {
+    if (this.size <= 1) {
+      return;
+    }
     let prevNode: SinglyLinkedNode<T> = null;
     let currentNode: SinglyLinkedNode<T> = this.head;
     while (currentNode != null) {
