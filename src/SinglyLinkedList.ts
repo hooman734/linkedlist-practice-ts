@@ -1,6 +1,6 @@
 import { ICollection } from './interfaces/ICollection';
 import { Iterator } from './interfaces/IIterator';
-import { Name } from './utilities/classdecorators';
+import { Name } from './utilities/ClassDecorators';
 
 class SinglyLinkedNode<T> {
   public value: T;

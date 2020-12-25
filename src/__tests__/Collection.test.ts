@@ -3,7 +3,7 @@ import { SinglyLinkedList } from '../SinglyLinkedList';
 import { DoublyLinkedList } from '../DoublyLinkedList';
 import { CircularSinglyLinkedList } from '../CircularSinglyLinkedList';
 import { CircularDoublyLinkedList } from '../CircularDoublyLinkedList';
-import { getName } from '../utilities/classdecorators';
+import { getName } from '../utilities/ClassDecorators';
 
 function testCollection<T extends ICollection<number>>(collection: T) {
 
