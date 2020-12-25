@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/amir734jj/linkedlist-practice-ts.svg?branch=master)](https://travis-ci.com/amir734jj/linkedlist-practice-ts)
 
-Playground for writing some typescript
+Playground for writing some typescript data structures
 
 ### Data-Structures:
 - SinglyLinkedList
