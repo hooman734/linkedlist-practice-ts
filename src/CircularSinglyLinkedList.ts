@@ -92,7 +92,7 @@ export class CircularSinglyLinkedList<T> implements ICollection<T> {
   }
 
   clear(): void {
-    this.head = null;
+    this.head = this.tail = null;
     this.size = 0;
   }
 }
