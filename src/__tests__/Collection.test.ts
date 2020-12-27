@@ -77,6 +77,51 @@ function testCollection<T extends ICollection<number>>(collection: T) {
       expect(Array.from(collection)).toEqual([2, 3, 5]);
     });
 
+    it('containsAll()', () => {
+
+      [6, 5, 4, 3, 2, 1].forEach(v => {
+        collection.add(v);
+      });
+
+      expect(collection.containsAll([4, 1, 3, 5, 6, 2])).toBe(true);
+      expect(collection.containsAll([1, 2])).toBe(true);
+      expect(collection.containsAll([1, 2, 7])).toBe(false);
+    });
+
+    it('isEmpty()', () => {
+
+      [6, 5, 4, 3, 2, 1].forEach(v => {
+        collection.add(v);
+      });
+
+      expect(collection.isEmpty()).toBe(false);
+      collection.clear();
+      expect(collection.isEmpty()).toBe(true);
+    });
+
+    it('toArray()', () => {
+      [6, 5, 4, 3, 2, 1].forEach(v => {
+        collection.add(v);
+      });
+
+      expect(collection.toArray()).toEqual([1, 2, 3, 4, 5, 6]);
+    });
+
+    it('shuffle()', () => {
+      [6, 5, 4, 3, 2, 1].forEach(v => {
+        collection.add(v);
+      });
+
+      const temporary = collection.shuffle();
+      expect(temporary.lastIndexOf(1)).toBeGreaterThanOrEqual(0);
+      expect(temporary.lastIndexOf(2)).toBeGreaterThanOrEqual(0);
+      expect(temporary.lastIndexOf(3)).toBeGreaterThanOrEqual(0);
+      expect(temporary.lastIndexOf(4)).toBeGreaterThanOrEqual(0);
+      expect(temporary.lastIndexOf(5)).toBeGreaterThanOrEqual(0);
+      expect(temporary.lastIndexOf(6)).toBeGreaterThanOrEqual(0);
+      expect(temporary.length).toBe(6);
+    });
+
   });
 }
 

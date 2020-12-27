@@ -9,5 +9,9 @@ export interface ICollection<T> {
   addAll(arr: T[]): void;
   removeAll(arr: T[]): void;
   contains(value: T): boolean;
+  containsAll(arr: T[]): boolean;
+  isEmpty(): boolean;
+  toArray(): T[];
+  shuffle(): T[];
   [Symbol.iterator]() : Iterator<T>;
 }

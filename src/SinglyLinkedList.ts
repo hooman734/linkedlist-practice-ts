@@ -97,9 +97,38 @@ export class SinglyLinkedList<T> implements ICollection<T> {
 
   removeAll(arr: T[]): void {
     arr.forEach(v => {
-      if (this.contains(v)) {
-        this.remove(v);
-      }
+      this.remove(v);
     });
+  }
+
+  containsAll(arr: T[]): boolean {
+    for (const v of arr) {
+      if (!this.contains(v)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  isEmpty(): boolean {
+    return (0 === this.size);
+  }
+
+  toArray(): T[] {
+    return Array.from(this);
+  }
+
+  shuffle(): T[] {
+    let mapIndexes = {};
+    do {
+      const index = Math.floor(this.size * Math.random());
+      mapIndexes[index] = Math.floor(this.size * Math.random());
+    } while (Object.keys(mapIndexes).length < this.size);
+    const temp = this.toArray();
+    let answer: T[];
+    for (let i = 0; i < this.size; ++i) {
+      answer[i] = temp[mapIndexes[i]];
+    }
+    return answer;
   }
 }
