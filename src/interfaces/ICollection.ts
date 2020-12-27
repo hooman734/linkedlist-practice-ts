@@ -6,5 +6,8 @@ export interface ICollection<T> {
   add(value: T) : void;
   remove(value: T) : void;
   reverse(): void;
+  addAll(arr: T[]): void;
+  removeAll(arr: T[]): void;
+  contains(value: T): boolean;
   [Symbol.iterator]() : Iterator<T>;
 }

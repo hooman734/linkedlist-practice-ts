@@ -79,4 +79,27 @@ export class SinglyLinkedList<T> implements ICollection<T> {
     this.head = null;
     this.size = 0;
   }
+
+  addAll(arr: T[]): void {
+    arr.forEach(v => {
+      this.add(v);
+    });
+  }
+
+  contains(value: T): boolean {
+    let temp = this.head;
+    for (let i = 0; i < this.size; ++i) {
+      if (value === temp.value) return true;
+      temp = temp.next;
+    }
+    return false;
+  }
+
+  removeAll(arr: T[]): void {
+    arr.forEach(v => {
+      if (this.contains(v)) {
+        this.remove(v);
+      }
+    });
+  }
 }

@@ -1,8 +1,8 @@
 import { ICollection } from '../interfaces/ICollection';
 import { SinglyLinkedList } from '../SinglyLinkedList';
-import { DoublyLinkedList } from '../DoublyLinkedList';
-import { CircularSinglyLinkedList } from '../CircularSinglyLinkedList';
-import { CircularDoublyLinkedList } from '../CircularDoublyLinkedList';
+// import { DoublyLinkedList } from '../DoublyLinkedList';
+// import { CircularSinglyLinkedList } from '../CircularSinglyLinkedList';
+// import { CircularDoublyLinkedList } from '../CircularDoublyLinkedList';
 import { getName } from '../utilities/ClassDecorators';
 
 function testCollection<T extends ICollection<number>>(collection: T) {
@@ -45,11 +45,43 @@ function testCollection<T extends ICollection<number>>(collection: T) {
       expect(collection.size).toBe(3);
       expect(Array.from(collection)).toEqual([3, 2, 1]);
     });
+
+    it('addAll()', () => {
+      [3, 2, 1].forEach(v => {
+        collection.add(v);
+      });
+
+      collection.addAll([6, 5, 4]);
+
+      expect(collection.size).toBe(6);
+      expect(Array.from(collection)).toEqual([4, 5, 6, 1, 2, 3]);
+    });
+
+    it('contains()', () => {
+      [3, 2, 1].forEach(v => {
+        collection.add(v);
+      });
+
+      expect(collection.contains(3)).toBe(true);
+      expect(collection.contains(4)).toBe(false);
+    });
+
+    it('removeAll()', () => {
+      [6, 5, 4, 3, 2, 1].forEach(v => {
+        collection.add(v);
+      });
+
+      collection.removeAll([1, 4, 6]);
+
+      expect(collection.size).toBe(3);
+      expect(Array.from(collection)).toEqual([2, 3, 5]);
+    });
+
   });
 }
 
 testCollection(new SinglyLinkedList<number>());
-testCollection(new DoublyLinkedList<number>());
-testCollection(new CircularSinglyLinkedList<number>());
-testCollection(new CircularDoublyLinkedList<number>());
+// testCollection(new DoublyLinkedList<number>());
+// testCollection(new CircularSinglyLinkedList<number>());
+// testCollection(new CircularDoublyLinkedList<number>());
 
