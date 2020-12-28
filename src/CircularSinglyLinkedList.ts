@@ -17,7 +17,7 @@ class CircularSinglyLinkedNode<T> {
 export class CircularSinglyLinkedList<T> extends AbstractCollection <T> {
   private head: CircularSinglyLinkedNode<T> = null;
   private tail: CircularSinglyLinkedNode<T> = null;
-  size = 0;
+  private size = 0;
 
   add(value: T): void {
     this.size++;

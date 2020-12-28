@@ -18,7 +18,7 @@ export class CircularDoublyLinkedList<T> extends AbstractCollection<T> {
 
   private head: CircularDoublyLinkedNode<T> = null;
   private tail: CircularDoublyLinkedNode<T> = null;
-  size = 0;
+  private size = 0;
 
   add(value: T): void {
     this.size++;

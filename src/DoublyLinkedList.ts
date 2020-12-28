@@ -21,7 +21,7 @@ class DoublyLinkedNode<T> {
 @Name('DoublyLinkedList')
 export class DoublyLinkedList<T> extends AbstractCollection <T> {
   private head: DoublyLinkedNode<T>;
-  size = 0;
+  private size = 0;
 
   add(value: T): void {
     this.size++;

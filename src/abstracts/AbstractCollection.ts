@@ -1,16 +1,17 @@
 import { ICollection } from '../interfaces/ICollection';
 
 export abstract class AbstractCollection<T> implements ICollection<T> {
-  size = 0;
-
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   abstract [Symbol.iterator](): Iterator<T>;
-
   abstract add(value: T): void;
   abstract remove(value: T): void;
   abstract clear(): void;
   abstract reverse(): void;
+
+  length(): number {
+    return this.toArray().length;
+  }
 
   contains(value: T): boolean {
     return this.toArray().includes(value);
@@ -32,7 +33,7 @@ export abstract class AbstractCollection<T> implements ICollection<T> {
   }
 
   isEmpty(): boolean {
-    return (0 === this.size);
+    return (0 === this.length());
   }
 
   removeAll(arr: T[]): void {
@@ -45,7 +46,7 @@ export abstract class AbstractCollection<T> implements ICollection<T> {
       const answer = [];
       const temp = this.toArray();
       while (temp.length > 0) {
-        const index = Math.floor(1.5 * this.size * Math.random()) % temp.length;
+        const index = Math.floor(1.5 * this.length() * Math.random()) % temp.length;
         answer.push(temp[index]);
         temp.splice(index, 1);
       }
