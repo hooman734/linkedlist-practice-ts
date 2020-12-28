@@ -13,11 +13,19 @@ Playground for writing some typescript data structures
 ### Common interface:
 ```typescript
 export interface ICollection<T> {
-    size: number;
-    clear(): void;
-    add(value: T) : void;
-    remove(value: T) : void;
-    reverse(): void;
-    [Symbol.iterator]() : Iterator<T>;
+  size: number;
+  clear(): void;
+  add(value: T) : void;
+  remove(value: T) : void;
+  reverse(): void;
+  addAll(arr: T[]): void;
+  removeAll(arr: T[]): void;
+  contains(value: T): boolean;
+  containsAll(arr: T[]): boolean;
+  isEmpty(): boolean;
+  toArray(): T[];
+  shuffle(): T[];
+  [Symbol.iterator]() : Iterator<T>;
 }
+
 ```
