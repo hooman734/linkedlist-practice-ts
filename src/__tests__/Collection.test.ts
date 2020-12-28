@@ -112,14 +112,22 @@ function testCollection<T extends ICollection<number>>(collection: T) {
         collection.add(v);
       });
 
-      const temporary = collection.shuffle();
-      expect(temporary.indexOf(1)).toBeGreaterThanOrEqual(0);
-      expect(temporary.indexOf(2)).toBeGreaterThanOrEqual(0);
-      expect(temporary.indexOf(3)).toBeGreaterThanOrEqual(0);
-      expect(temporary.indexOf(4)).toBeGreaterThanOrEqual(0);
-      expect(temporary.indexOf(5)).toBeGreaterThanOrEqual(0);
-      expect(temporary.indexOf(6)).toBeGreaterThanOrEqual(0);
-      expect(temporary.length).toBe(6);
+      const result = collection.shuffle();
+      expect(result.indexOf(1)).toBeGreaterThanOrEqual(0);
+      expect(result.indexOf(2)).toBeGreaterThanOrEqual(0);
+      expect(result.indexOf(3)).toBeGreaterThanOrEqual(0);
+      expect(result.indexOf(4)).toBeGreaterThanOrEqual(0);
+      expect(result.indexOf(5)).toBeGreaterThanOrEqual(0);
+      expect(result.indexOf(6)).toBeGreaterThanOrEqual(0);
+      expect(result.length).toBe(6);
+    });
+
+    it('sort()', () => {
+      [2, 1, 6, 4, 5, 3].forEach(v => {
+        collection.add(v);
+      });
+      const result = collection.sort();
+      expect(result.sort()).toBe([1, 2, 3, 4, 5, 6]);
     });
 
   });

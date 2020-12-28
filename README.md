@@ -25,6 +25,7 @@ export interface ICollection<T> {
   isEmpty(): boolean;
   toArray(): T[];
   shuffle(): T[];
+  sort(comparer?: (a: T, b: T) => number): T[];
   [Symbol.iterator]() : Iterator<T>;
 }
 

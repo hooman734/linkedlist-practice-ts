@@ -61,4 +61,11 @@ export abstract class AbstractCollection<T> implements ICollection<T> {
     return Array.from(this);
   }
 
+  sort(comparer?: (a: T, b: T) => number): T[] {
+    if (typeof comparer == 'undefined') {
+      return this.toArray().sort();
+    }
+    return this.toArray().sort(comparer);
+  }
+
 }
