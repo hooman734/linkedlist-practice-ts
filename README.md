@@ -13,7 +13,7 @@ Playground for writing some typescript data structures
 ### Common interface:
 ```typescript
 export interface ICollection<T> {
-  size: number;
+  length(): number;
   clear(): void;
   add(value: T) : void;
   remove(value: T) : void;
@@ -28,5 +28,6 @@ export interface ICollection<T> {
   sort(comparer?: (a: T, b: T) => number): T[];
   [Symbol.iterator]() : Iterator<T>;
 }
+
 
 ```
