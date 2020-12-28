@@ -11,7 +11,6 @@ export abstract class AbstractCollection<T> implements ICollection<T> {
   abstract remove(value: T): void;
   abstract clear(): void;
   abstract reverse(): void;
-  protected head;
 
   contains(value: T): boolean {
     return this.toArray().includes(value);

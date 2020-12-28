@@ -15,7 +15,7 @@ class CircularSinglyLinkedNode<T> {
 
 @Name('CircularSinglyLinkedList')
 export class CircularSinglyLinkedList<T> extends AbstractCollection <T> {
-  head: CircularSinglyLinkedNode<T> = null;
+  private head: CircularSinglyLinkedNode<T> = null;
   private tail: CircularSinglyLinkedNode<T> = null;
   size = 0;
 

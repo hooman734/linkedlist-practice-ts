@@ -14,7 +14,7 @@ class SinglyLinkedNode<T> {
 
 @Name("SinglyLinkedList")
 export class SinglyLinkedList<T> extends AbstractCollection<T> {
-  head: SinglyLinkedNode<T> = null;
+  private head: SinglyLinkedNode<T> = null;
 
   add(value: T): void {
     this.size++;

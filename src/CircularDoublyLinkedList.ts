@@ -16,7 +16,7 @@ class CircularDoublyLinkedNode<T> {
 @Name("CircularDoublyLinkedList")
 export class CircularDoublyLinkedList<T> extends AbstractCollection<T> {
 
-  protected head: CircularDoublyLinkedNode<T> = null;
+  private head: CircularDoublyLinkedNode<T> = null;
   private tail: CircularDoublyLinkedNode<T> = null;
   size = 0;
 
