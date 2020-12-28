@@ -119,15 +119,12 @@ export class SinglyLinkedList<T> implements ICollection<T> {
   }
 
   shuffle(): T[] {
-    let mapIndexes = {};
-    do {
-      const index = Math.floor(this.size * Math.random());
-      mapIndexes[index] = Math.floor(this.size * Math.random());
-    } while (Object.keys(mapIndexes).length < this.size);
+    const answer = [];
     const temp = this.toArray();
-    let answer: T[];
-    for (let i = 0; i < this.size; ++i) {
-      answer[i] = temp[mapIndexes[i]];
+    while (temp.length > 0) {
+      const index = Math.floor(1.5 * this.size * Math.random()) % temp.length;
+      answer.push(temp[index]);
+      temp.splice(index, 1);
     }
     return answer;
   }

@@ -113,12 +113,12 @@ function testCollection<T extends ICollection<number>>(collection: T) {
       });
 
       const temporary = collection.shuffle();
-      expect(temporary.lastIndexOf(1)).toBeGreaterThanOrEqual(0);
-      expect(temporary.lastIndexOf(2)).toBeGreaterThanOrEqual(0);
-      expect(temporary.lastIndexOf(3)).toBeGreaterThanOrEqual(0);
-      expect(temporary.lastIndexOf(4)).toBeGreaterThanOrEqual(0);
-      expect(temporary.lastIndexOf(5)).toBeGreaterThanOrEqual(0);
-      expect(temporary.lastIndexOf(6)).toBeGreaterThanOrEqual(0);
+      expect(temporary.indexOf(1)).toBeGreaterThanOrEqual(0);
+      expect(temporary.indexOf(2)).toBeGreaterThanOrEqual(0);
+      expect(temporary.indexOf(3)).toBeGreaterThanOrEqual(0);
+      expect(temporary.indexOf(4)).toBeGreaterThanOrEqual(0);
+      expect(temporary.indexOf(5)).toBeGreaterThanOrEqual(0);
+      expect(temporary.indexOf(6)).toBeGreaterThanOrEqual(0);
       expect(temporary.length).toBe(6);
     });
 
