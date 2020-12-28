@@ -12,13 +12,9 @@ export abstract class AbstractCollection<T> implements ICollection<T> {
   abstract clear(): void;
   abstract reverse(): void;
   protected head;
+
   contains(value: T): boolean {
-    let temp = this.head;
-    for (let i = 0; i < this.size; ++i) {
-      if (value === temp.value) return true;
-      temp = temp.next;
-    }
-    return false;
+    return this.toArray().includes(value);
   }
 
   containsAll(arr: T[]): boolean {
@@ -62,7 +58,7 @@ export abstract class AbstractCollection<T> implements ICollection<T> {
   }
 
   sort(comparer?: (a: T, b: T) => number): T[] {
-    if (typeof comparer == 'undefined') {
+    if (comparer) {
       return this.toArray().sort();
     }
     return this.toArray().sort(comparer);

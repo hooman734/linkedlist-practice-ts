@@ -127,7 +127,7 @@ function testCollection<T extends ICollection<number>>(collection: T) {
         collection.add(v);
       });
       const result = collection.sort();
-      expect(result.sort()).toBe([1, 2, 3, 4, 5, 6]);
+      expect(result).toEqual([1, 2, 3, 4, 5, 6]);
     });
 
   });
