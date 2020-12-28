@@ -1,4 +1,4 @@
-import { ICollection } from './interfaces/ICollection';
+import { AbstractCollection } from './abstracts/AbstractCollection';
 import { Iterator } from './interfaces/IIterator';
 import { Name } from './utilities/ClassDecorators';
 
@@ -14,8 +14,8 @@ class CircularSinglyLinkedNode<T> {
 
 
 @Name('CircularSinglyLinkedList')
-export class CircularSinglyLinkedList<T> implements ICollection<T> {
-  private head: CircularSinglyLinkedNode<T> = null;
+export class CircularSinglyLinkedList<T> extends AbstractCollection <T> {
+  head: CircularSinglyLinkedNode<T> = null;
   private tail: CircularSinglyLinkedNode<T> = null;
   size = 0;
 

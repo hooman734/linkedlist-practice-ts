@@ -1,8 +1,8 @@
 import { ICollection } from '../interfaces/ICollection';
 import { SinglyLinkedList } from '../SinglyLinkedList';
-// import { DoublyLinkedList } from '../DoublyLinkedList';
-// import { CircularSinglyLinkedList } from '../CircularSinglyLinkedList';
-// import { CircularDoublyLinkedList } from '../CircularDoublyLinkedList';
+import { DoublyLinkedList } from '../DoublyLinkedList';
+import { CircularSinglyLinkedList } from '../CircularSinglyLinkedList';
+import { CircularDoublyLinkedList } from '../CircularDoublyLinkedList';
 import { getName } from '../utilities/ClassDecorators';
 
 function testCollection<T extends ICollection<number>>(collection: T) {
@@ -126,7 +126,9 @@ function testCollection<T extends ICollection<number>>(collection: T) {
 }
 
 testCollection(new SinglyLinkedList<number>());
-// testCollection(new DoublyLinkedList<number>());
-// testCollection(new CircularSinglyLinkedList<number>());
-// testCollection(new CircularDoublyLinkedList<number>());
+testCollection(new DoublyLinkedList<number>());
+testCollection(new CircularSinglyLinkedList<number>());
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+testCollection(new CircularDoublyLinkedList<number>());
 

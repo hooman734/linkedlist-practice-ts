@@ -11,7 +11,15 @@ export abstract class AbstractCollection<T> implements ICollection<T> {
   abstract remove(value: T): void;
   abstract clear(): void;
   abstract reverse(): void;
-  abstract contains(value: T): boolean;
+  protected head;
+  contains(value: T): boolean {
+    let temp = this.head;
+    for (let i = 0; i < this.size; ++i) {
+      if (value === temp.value) return true;
+      temp = temp.next;
+    }
+    return false;
+  }
 
   containsAll(arr: T[]): boolean {
     for (const v of arr) {

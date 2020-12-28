@@ -1,4 +1,4 @@
-import { ICollection } from './interfaces/ICollection';
+import { AbstractCollection} from './abstracts/AbstractCollection';
 import { Iterator } from './interfaces/IIterator';
 import { Name } from './utilities/ClassDecorators';
 
@@ -19,8 +19,8 @@ class DoublyLinkedNode<T> {
 }
 
 @Name('DoublyLinkedList')
-export class DoublyLinkedList<T> implements ICollection<T> {
-  private head: DoublyLinkedNode<T>;
+export class DoublyLinkedList<T> extends AbstractCollection <T> {
+  head: DoublyLinkedNode<T>;
   size = 0;
 
   add(value: T): void {
