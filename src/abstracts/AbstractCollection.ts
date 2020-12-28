@@ -1,16 +1,17 @@
 import { ICollection } from '../interfaces/ICollection';
 
-abstract class AbstractCollection<T> implements ICollection<T> {
-  size: number;
+export abstract class AbstractCollection<T> implements ICollection<T> {
+  size = 0;
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   abstract [Symbol.iterator](): Iterator<T>;
 
-  add(value: T): void;
-  remove(value: T): void;
-  addAll(arr: T[]): void;
-  clear(): void;
-  reverse(): void;
-  contains(value: T): boolean;
+  abstract add(value: T): void;
+  abstract remove(value: T): void;
+  abstract clear(): void;
+  abstract reverse(): void;
+  abstract contains(value: T): boolean;
 
   containsAll(arr: T[]): boolean {
     for (const v of arr) {
@@ -19,6 +20,12 @@ abstract class AbstractCollection<T> implements ICollection<T> {
       }
     }
     return true;
+  }
+
+  addAll(arr: T[]): void {
+    arr.forEach(v => {
+      this.add(v);
+    });
   }
 
   isEmpty(): boolean {
@@ -32,15 +39,15 @@ abstract class AbstractCollection<T> implements ICollection<T> {
   }
 
   shuffle(): T[] {
-    const answer = [];
-    const temp = this.toArray();
-    while (temp.length > 0) {
-      const index = Math.floor(1.5 * this.size * Math.random()) % temp.length;
-      answer.push(temp[index]);
-      temp.splice(index, 1);
+      const answer = [];
+      const temp = this.toArray();
+      while (temp.length > 0) {
+        const index = Math.floor(1.5 * this.size * Math.random()) % temp.length;
+        answer.push(temp[index]);
+        temp.splice(index, 1);
+      }
+      return answer;
     }
-    return answer;
-  }
 
   toArray(): T[] {
     return Array.from(this);

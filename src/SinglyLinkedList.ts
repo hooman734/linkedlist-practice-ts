@@ -1,4 +1,4 @@
-import { ICollection } from './interfaces/ICollection';
+import { AbstractCollection } from './abstracts/AbstractCollection';
 import { Iterator } from './interfaces/IIterator';
 import { Name } from './utilities/ClassDecorators';
 
@@ -13,9 +13,8 @@ class SinglyLinkedNode<T> {
 }
 
 @Name("SinglyLinkedList")
-export class SinglyLinkedList<T> implements ICollection<T> {
+export class SinglyLinkedList<T> extends AbstractCollection<T> {
   private head: SinglyLinkedNode<T> = null;
-  size = 0;
 
   add(value: T): void {
     this.size++;
@@ -80,12 +79,6 @@ export class SinglyLinkedList<T> implements ICollection<T> {
     this.size = 0;
   }
 
-  addAll(arr: T[]): void {
-    arr.forEach(v => {
-      this.add(v);
-    });
-  }
-
   contains(value: T): boolean {
     let temp = this.head;
     for (let i = 0; i < this.size; ++i) {
@@ -93,39 +86,5 @@ export class SinglyLinkedList<T> implements ICollection<T> {
       temp = temp.next;
     }
     return false;
-  }
-
-  removeAll(arr: T[]): void {
-    arr.forEach(v => {
-      this.remove(v);
-    });
-  }
-
-  containsAll(arr: T[]): boolean {
-    for (const v of arr) {
-      if (!this.contains(v)) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  isEmpty(): boolean {
-    return (0 === this.size);
-  }
-
-  toArray(): T[] {
-    return Array.from(this);
-  }
-
-  shuffle(): T[] {
-    const answer = [];
-    const temp = this.toArray();
-    while (temp.length > 0) {
-      const index = Math.floor(1.5 * this.size * Math.random()) % temp.length;
-      answer.push(temp[index]);
-      temp.splice(index, 1);
-    }
-    return answer;
   }
 }
