@@ -18,7 +18,7 @@ function testCollection<T extends ICollection<number>>(collection: T) {
         collection.add(v);
       });
 
-      expect(collection.size).toBe(3);
+      expect(collection.length()).toBe(3);
       expect(Array.from(collection)).toEqual([1, 2, 3]);
     });
 
@@ -31,7 +31,7 @@ function testCollection<T extends ICollection<number>>(collection: T) {
         collection.remove(v);
       });
 
-      expect(collection.size).toBe(0);
+      expect(collection.length()).toBe(0);
       expect(Array.from(collection)).toEqual([]);
     });
 
@@ -42,7 +42,7 @@ function testCollection<T extends ICollection<number>>(collection: T) {
 
       collection.reverse();
 
-      expect(collection.size).toBe(3);
+      expect(collection.length()).toBe(3);
       expect(Array.from(collection)).toEqual([3, 2, 1]);
     });
 
@@ -53,7 +53,7 @@ function testCollection<T extends ICollection<number>>(collection: T) {
 
       collection.addAll([6, 5, 4]);
 
-      expect(collection.size).toBe(6);
+      expect(collection.length()).toBe(6);
       expect(Array.from(collection)).toEqual([4, 5, 6, 1, 2, 3]);
     });
 
@@ -73,7 +73,7 @@ function testCollection<T extends ICollection<number>>(collection: T) {
 
       collection.removeAll([1, 4, 6]);
 
-      expect(collection.size).toBe(3);
+      expect(collection.length()).toBe(3);
       expect(Array.from(collection)).toEqual([2, 3, 5]);
     });
 
