@@ -4,7 +4,6 @@ pipeline {
         stage('Initiate') { 
             steps {
                 npm install
-                echo "npm version = $(npm -v)"
             }
         }
         stage('Test') { 
